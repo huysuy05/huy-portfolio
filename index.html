@@ -210,6 +210,12 @@
   .cite{
     border-left:2px solid var(--sage);padding:4px 0 4px 22px;margin-top:6px;
   }
+  .cite + .cite{margin-top:38px;}
+  .cite .cite-kind{
+    display:inline-block;font-family:"Courier Prime",monospace;font-size:11px;letter-spacing:0.14em;
+    text-transform:uppercase;color:var(--sage-deep);border:1px solid var(--sage);border-radius:2px;
+    padding:2px 7px;margin-bottom:10px;
+  }
   .cite .cite-authors{color:var(--ink-soft);font-size:1rem;}
   .cite .cite-authors .me{color:var(--ink);font-weight:600;font-style:normal;}
   .cite .cite-title{
@@ -281,6 +287,7 @@
   .listing-when{font-family:"Courier Prime",monospace;font-size:11.5px;letter-spacing:0.06em;color:var(--ink-soft);text-transform:uppercase;white-space:nowrap;}
   .listing-sub{font-family:"Courier Prime",monospace;font-size:12px;letter-spacing:0.05em;color:var(--sage-deep);margin-top:6px;}
   .listing-sub .place{color:var(--ink-soft);}
+  .listing-body{font-size:1rem;color:var(--ink);margin:10px 0 0;max-width:62ch;}
 
   /* section divider */
   .divider{display:flex;align-items:center;justify-content:center;gap:16px;padding:6px 0;}
@@ -374,6 +381,7 @@
     </div>
     <nav class="nav" aria-label="Primary">
       <a href="#interests">Interests</a>
+      <a href="#publications">Publications</a>
       <a href="#research">Research</a>
       <a href="#projects">Projects</a>
       <a class="nav-cv" href="https://drive.google.com/file/d/1ofjegtVzFbEBBZFHZajZdIpnbCRMIM8v/view?usp=sharing" target="_blank" rel="noopener">CV</a>
@@ -441,7 +449,7 @@
         <a href="https://github.com/huysuy05" target="_blank" rel="noopener">github.com/huysuy05</a>
       </div>
 
-      <a class="btn-cv reveal" href="https://drive.google.com/file/d/1RTsAPl8kJGe4iPZ8iesvZv34bDNQbwyz/view?usp=drive_link" target="_blank" rel="noopener">
+      <a class="btn-cv reveal" href="https://drive.google.com/file/d/1ofjegtVzFbEBBZFHZajZdIpnbCRMIM8v/view?usp=sharing" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
         View CV
       </a>
@@ -495,6 +503,7 @@
           <span class="listing-when">Expected May 2027</span>
         </div>
         <div class="listing-sub">B.A. Data Science · GPA 3.5 / 4.0 <span class="place">/ Rock Island, IL</span></div>
+        <p class="listing-body">Coursework in machine learning, deep learning, linear algebra, multivariable calculus, probability and statistics, and principles of computer systems.</p>
       </div>
       <div class="listing">
         <div class="listing-top">
@@ -502,6 +511,7 @@
           <span class="listing-when">Jan – May 2026</span>
         </div>
         <div class="listing-sub">Study &amp; Research Abroad · GPA 4.0 / 4.0 <span class="place">/ Budapest, Hungary</span></div>
+        <p class="listing-body">Research topic: machine learning for meme template identification, supervised by Dr. Roland Molontay.</p>
       </div>
     </div>
   </div>
@@ -515,10 +525,26 @@
       <h2 class="plate-title">Under review</h2>
     </div>
     <div class="cite reveal">
-      <div class="cite-authors">Xiaofan Zhou, <span class="me">Huy Nguyen</span>, Bo Yu, Lu Cheng</div>
+      <span class="cite-kind">Conference</span>
+      <div class="cite-authors"><span class="me">Huy Nguyen</span>, Levente Murgás, Donát Ákos Köller, Marcell Nagy, Kate Barnes, Roland Molontay</div>
+      <span class="cite-title">Meme Template Identification in the Wild: Comparing Methods for Semi-Open-Set Recognition</span>
+      <span class="cite-venue">Under review · 2026</span>
+    </div>
+
+    <div class="cite reveal">
+      <span class="cite-kind">Workshop</span>
+      <div class="cite-authors"><span class="me">Huy Nguyen</span>, Yue Lin</div>
+      <span class="cite-title">Is Your Neighborhood Safe? Place-based Stigma in Large Language Models&rsquo; Urban Safety Judgments</span>
+      <span class="cite-venue">Under review · 2026</span>
+      <a class="cite-link" href="https://arxiv.org/abs/2608.26188" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>Read on arXiv</a>
+    </div>
+
+    <div class="cite reveal">
+      <span class="cite-kind">Conference</span>
+      <div class="cite-authors">Xiaofan Zhou, <span class="me">Huy Nguyen</span>, Bo Yu, Chenxi Liu, Lu Cheng</div>
       <span class="cite-title">Adaptive Stopping for Multi-Turn LLM Reasoning</span>
       <span class="cite-venue">Under review · 2026</span>
-      <a class="cite-link" href="https://arxiv.org/pdf/2604.01413v2" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>Read on arXiv</a>
+      <a class="cite-link" href="https://arxiv.org/abs/2604.01413" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>Read on arXiv</a>
     </div>
   </div>
 </section>
@@ -538,9 +564,9 @@
         <h3 class="entry-org">The University of Chicago</h3>
         <span class="entry-when">Jun 2026 – Present</span>
       </div>
-      <div class="entry-role">Research Intern · Knowledge Lab, NSF APTO <span class="place">/ Chicago, IL</span></div>
-      <p class="entry-body">I build a product-lineage graph over 954K semiconductor designs across 302 chip categories, tracing design descent and cross-manufacturer copying with sentence-transformer embeddings, spec features, and part-number provenance priors in a learned ranker over eight million-plus edges. To measure how commoditized a design space has become, I define a saturation index, the size of a design's calibrated ancestor set, with a distribution-free split-conformal guarantee (0.908 coverage at a 0.90 target, a median of 48 indistinguishable predecessors). Adapting identity-by-descent and identity-by-state from population genetics, I separate in-firm inheritance from cross-firm second-sourcing and trace how dominant designs emerge.</p>
-      <div class="entry-people">Supervisor: Dr. Julia Koschinsky · Mentor: Dr. Dawoon Jung</div>
+      <div class="entry-role">Research Intern · Knowledge Lab <span class="place">/ Chicago, IL</span></div>
+      <p class="entry-body">I propose <em>anchored exploration</em>, a framework built on a two-layer phylogenetic network of 500,206 semiconductor designs spanning 1953 to 2024, inferring 493,053 ancestor–descendant relationships and 5,852 capability-transfer events from 563 specifications each. Alongside it I constructed and released a public dataset of 1.74M semiconductor products across 817 standardized attributes, covering 1930 to 2024. The network predicts product obsolescence at 0.72 AUC and capability origin at 0.74, beating the 0.62 achievable from a design's own specifications.</p>
+      <div class="entry-people">Supervisor: Dr. Dawoon Jeong</div>
     </div>
 
     <div class="entry reveal">
@@ -549,7 +575,7 @@
         <span class="entry-when">Jan 2026 – May 2026</span>
       </div>
       <div class="entry-role">Visiting Student Researcher <span class="place">/ Budapest, Hungary</span></div>
-      <p class="entry-body">I proposed a dual-encoder unsupervised method for meme-template classification that outperforms prior unsupervised baselines by 6% and matches CNN-level accuracy on the ImgFlip benchmark. Studying 53K+ posts across 1.5K+ templates, I cluster smoothed monthly usage trajectories to surface template lifecycles and long-run trends, and pair BERTopic with sentiment and emotion analysis over 79K+ posts to uncover how captions reshape a template's meaning over time.</p>
+      <p class="entry-body">I proposed <em>SEED</em>, a novel unsupervised method for meme-template classification that outperforms prior unsupervised baselines by 6% and matches CNN-level accuracy on the ImgFlip benchmark. Studying 53K+ posts across 1.5K+ templates, I cluster smoothed monthly usage trajectories to surface template lifecycles and long-run trends, and pair BERTopic with sentiment and emotion analysis over 79K+ posts to uncover how captions reshape a template's meaning over time.</p>
       <div class="entry-people">Supervisor: Dr. Roland Molontay · Mentor: Donat Koller</div>
     </div>
 
@@ -559,7 +585,7 @@
         <span class="entry-when">Aug 2025 – Dec 2025</span>
       </div>
       <div class="entry-role">Research Intern <span class="place">/ Chicago, IL</span></div>
-      <p class="entry-body">I developed MiCP, a conformal-prediction framework with an adaptive rejection mechanism for multi-turn LLM reasoning, calibrating retrieval and prediction-set thresholds per reasoning step to give formal coverage across both retrieval and generation. Across five QA benchmarks, ReAct, and three LLMs it holds target coverage while cutting reasoning turns by up to 40.7% and prediction-set size by up to 22.1%.</p>
+      <p class="entry-body">I developed <em>MiCP</em>, the first conformal-prediction framework with an adaptive rejection mechanism for multi-turn LLM reasoning, calibrating retrieval and prediction-set thresholds per reasoning step to give formal coverage across both retrieval and generation. Across five QA benchmarks, ReAct, and three LLMs it holds target coverage while cutting reasoning turns by up to 40.7% and prediction-set size by up to 22.1%.</p>
       <div class="entry-people">Supervisor: Dr. Lu Cheng · Mentor: Xiaofan Zhou</div>
     </div>
   </div>
@@ -684,7 +710,8 @@
           <h3 class="listing-name">Google Developer Group, Augustana</h3>
           <span class="listing-when">Sep 2024 – Present</span>
         </div>
-        <div class="listing-sub">Technical Lead · workshops on CS, AI, and research</div>
+        <div class="listing-sub">Technical Lead <span class="place">/ Augustana College</span></div>
+        <p class="listing-body">I lead a team of 20 student organizers running workshops, technical talks, and community events on computer science and AI. I design and host weekly hands-on seminars, including &ldquo;Break the Bot,&rdquo; where students probe AI security through prompt injection, jailbreak techniques, and robustness evaluation, and I teach sessions on AI-assisted research workflows that emphasize responsible, reproducible practice.</p>
       </div>
       <div class="listing">
         <div class="listing-top">
@@ -706,7 +733,7 @@
       <a href="tel:+13096315584">+1 (309) 631 5584</a>
       <a href="https://linkedin.com/in/huy05" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/huysuy05" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://drive.google.com/file/d/1RTsAPl8kJGe4iPZ8iesvZv34bDNQbwyz/view?usp=drive_link" target="_blank" rel="noopener">CV</a>
+      <a href="https://drive.google.com/file/d/1ofjegtVzFbEBBZFHZajZdIpnbCRMIM8v/view?usp=sharing" target="_blank" rel="noopener">CV</a>
     </div>
     <p class="colophon-note reveal">© 2026 Huy The Nguyen</p>
   </div>
