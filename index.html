@@ -29,6 +29,16 @@
     --grid:rgba(20,22,28,0.07);
     --ring:rgba(79,70,229,0.45);
     --radius:20px;
+    /* frosted pane: tint light enough to read text on, blur carries the rest */
+    --glass:linear-gradient(145deg,rgba(255,255,255,0.62) 0%,rgba(255,255,255,0.44) 52%,rgba(255,255,255,0.54) 100%);
+    --glass-rim:
+      inset 0 1px 0 rgba(255,255,255,0.92),
+      inset 0 -1px 0 rgba(255,255,255,0.4),
+      0 8px 30px -16px rgba(20,22,28,0.20);
+    /* chromatic fringe echoing the navbar lens, used on hover */
+    --glass-fringe:
+      inset 4px 0 12px -4px rgba(56,189,248,0.42),
+      inset -4px 0 12px -4px rgba(244,114,182,0.38);
   }
 
   *{box-sizing:border-box;}
@@ -39,6 +49,10 @@
     /* graph-paper field with a soft vignette, after paytonpierce.dev */
     background-color:var(--bg);
     background-image:
+      radial-gradient(58% 48% at 10% 14%, rgba(99,102,241,0.15) 0%, transparent 70%),
+      radial-gradient(52% 44% at 92% 30%, rgba(219,39,119,0.12) 0%, transparent 70%),
+      radial-gradient(50% 42% at 72% 78%, rgba(56,189,248,0.13) 0%, transparent 70%),
+      radial-gradient(46% 40% at 22% 92%, rgba(124,58,237,0.10) 0%, transparent 70%),
       radial-gradient(ellipse 85% 75% at 50% 22%, transparent 8%, var(--bg) 76%),
       repeating-linear-gradient(to right, var(--grid) 0 1px, transparent 1px 48px),
       repeating-linear-gradient(to bottom, var(--grid) 0 1px, transparent 1px 48px);
@@ -181,16 +195,19 @@
 
   .card{
     position:relative;
-    border:1px solid var(--line);
+    border:1px solid rgba(20,22,28,0.07);
     border-radius:var(--radius);
-    background:var(--surface);
+    background:var(--glass);
+    -webkit-backdrop-filter:blur(14px) saturate(170%);
+    backdrop-filter:blur(14px) saturate(170%);
+    box-shadow:var(--glass-rim);
     padding:26px 28px;
     transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease;
   }
   .card:hover{
     border-color:var(--ring);
     transform:translateY(-2px);
-    box-shadow:0 16px 38px -22px rgba(79,70,229,0.5);
+    box-shadow:var(--glass-rim), var(--glass-fringe), 0 16px 38px -22px rgba(79,70,229,0.45);
   }
   .card-title{
     font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:500;
@@ -219,7 +236,11 @@
   .badges{display:flex;flex-wrap:wrap;gap:8px;}
   .badge{
     display:inline-block;padding:5px 12px;border-radius:999px;
-    border:1px solid var(--line-2);background:var(--surface-2);
+    border:1px solid rgba(20,22,28,0.10);
+    background:linear-gradient(145deg,rgba(255,255,255,0.72),rgba(255,255,255,0.44));
+    -webkit-backdrop-filter:blur(8px) saturate(150%);
+    backdrop-filter:blur(8px) saturate(150%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.85);
     font-size:12.5px;font-weight:500;color:var(--ink-2);
     transition:color .2s ease, border-color .2s ease, background .2s ease;
   }
@@ -251,12 +272,16 @@
 
   /* ============ PUBLICATIONS ============ */
   .pub{
-    position:relative;border:1px solid var(--line);border-radius:var(--radius);
-    background:var(--surface);padding:24px 26px 24px 28px;overflow:hidden;
+    position:relative;border:1px solid rgba(20,22,28,0.07);border-radius:var(--radius);
+    background:var(--glass);
+    -webkit-backdrop-filter:blur(14px) saturate(170%);
+    backdrop-filter:blur(14px) saturate(170%);
+    box-shadow:var(--glass-rim);
+    padding:24px 26px 24px 28px;overflow:hidden;
     transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease;
   }
   .pub::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--brand);opacity:.85;}
-  .pub:hover{border-color:var(--ring);transform:translateY(-2px);box-shadow:0 16px 38px -22px rgba(79,70,229,0.5);}
+  .pub:hover{border-color:var(--ring);transform:translateY(-2px);box-shadow:var(--glass-rim), var(--glass-fringe), 0 16px 38px -22px rgba(79,70,229,0.45);}
   .pub-kind{
     display:inline-block;font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;
     letter-spacing:0.14em;text-transform:uppercase;color:var(--b2);
@@ -376,6 +401,11 @@
           <p>I&rsquo;m a <strong>senior in Data Science at Augustana College</strong>, and I&rsquo;m planning to pursue a <strong>PhD in computer science or data science</strong>.</p>
           <p>My research sits at the intersection of <strong>large language models</strong> and <strong>AI for social science</strong>. Right now I&rsquo;m interested not only in the underlying patterns inside these models, but in how those patterns can be made <strong>causal and explainable</strong> on questions that matter to people and society.</p>
         </div>
+      </div>
+
+      <div class="card col2 reveal">
+        <span class="card-title">Looking ahead</span>
+        <p class="entry-body">I&rsquo;m applying to PhD programs in computer science and data science, looking for groups where language models are studied as instruments for understanding people and society, not only as systems to be scaled.</p>
       </div>
 
       <div class="stack">
@@ -622,11 +652,6 @@
         </div>
       </div>
 
-      <div class="card reveal">
-        <span class="card-title">Looking ahead</span>
-        <p class="entry-body">I&rsquo;m applying to PhD programs in computer science and data science, looking for groups where language models are studied as instruments for understanding people and society, not only as systems to be scaled.</p>
-      </div>
-
     </div>
   </div>
 </section>
@@ -667,30 +692,53 @@
     var lensOk = lens && mq && mq('(pointer: fine)').matches && !mq('(prefers-reduced-motion: reduce)').matches;
     if (lens && !lensOk) { lens.parentNode.removeChild(lens); }
     else if (lensOk) {
-      var tx = 0, cur = null, raf = null;
+      // The lens only exists over a real nav item: it snaps to the hovered
+      // link's box and hides over the bar's empty space, rather than gliding
+      // across a blank stretch. Centre and width are both eased so it
+      // stretches between items instead of jumping.
+      var items = Array.prototype.slice.call(bar.querySelectorAll('.brandmark, .glass-nav a:not(.nav-cv)'));
+      var tx = 0, curC = null, curW = null, raf = null, over = false;
+
+      var hit = function(clientX){
+        for (var i = 0; i < items.length; i++){
+          var r = items[i].getBoundingClientRect();
+          if (clientX >= r.left - 2 && clientX <= r.right + 2) return r;
+        }
+        return null;
+      };
+
       var tick = function(){
-        var r = bar.getBoundingClientRect(), w = lens.offsetWidth;
-        var half = w / 2;
-        var target = Math.min(Math.max(tx - r.left, half), r.width - half);
-        if (cur === null) cur = target;
-        cur += (target - cur) * 0.18;
-        lens.style.left = (cur - half) + 'px';
+        var br = bar.getBoundingClientRect();
+        var r = over ? hit(tx) : null;
+        if (!r){
+          lens.classList.remove('active');
+        } else {
+          var tW = r.width + 18;
+          var tC = r.left + r.width / 2 - br.left;
+          if (curC === null){ curC = tC; curW = tW; }
+          curC += (tC - curC) * 0.2;
+          curW += (tW - curW) * 0.2;
+          lens.style.width = curW + 'px';
+          lens.style.left = (curC - curW / 2) + 'px';
+          lens.classList.add('active');
+        }
         raf = requestAnimationFrame(tick);
       };
+
       bar.addEventListener('pointerenter', function(e){
         if (e.pointerType !== 'mouse') return;
-        tx = e.clientX;
-        lens.classList.add('active');
+        tx = e.clientX; over = true;
         if (!raf) raf = requestAnimationFrame(tick);
       });
       bar.addEventListener('pointermove', function(e){
         if (e.pointerType !== 'mouse') return;
-        tx = e.clientX;
+        tx = e.clientX; over = true;
       }, {passive:true});
       bar.addEventListener('pointerleave', function(){
+        over = false;
         lens.classList.remove('active');
         if (raf) { cancelAnimationFrame(raf); raf = null; }
-        cur = null;
+        curC = null; curW = null;
       });
     }
 
