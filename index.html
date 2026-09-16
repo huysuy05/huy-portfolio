@@ -152,6 +152,7 @@
   /* ============ BENTO ============ */
   .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start;}
   .bento-2{grid-template-columns:repeat(2,1fr);}
+  .bento-1{grid-template-columns:1fr;}
   .col2{grid-column:span 2;}
   .stack{display:flex;flex-direction:column;gap:16px;}
 
@@ -391,9 +392,9 @@
       <h2 class="section-title">Under <span class="grad">review</span></h2>
       <p class="section-sub">Work currently submitted, spanning open-set recognition, fairness in language models, and uncertainty in multi-turn reasoning.</p>
     </div>
-    <div class="bento">
+    <div class="bento bento-1">
 
-      <div class="pub col2 reveal">
+      <div class="pub reveal">
         <span class="pub-kind">Conference</span>
         <h3 class="pub-title">Meme Template Identification in the Wild: Comparing Methods for Semi-Open-Set Recognition</h3>
         <div class="pub-authors"><span class="me">Huy Nguyen</span>, Levente Murgás, Donát Ákos Köller, Marcell Nagy, Kate Barnes, Roland Molontay</div>
@@ -408,7 +409,7 @@
         <a class="pub-link" href="https://arxiv.org/abs/2608.26188" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>Read on arXiv</a>
       </div>
 
-      <div class="pub col2 reveal">
+      <div class="pub reveal">
         <span class="pub-kind">Conference</span>
         <h3 class="pub-title">Adaptive Stopping for Multi-Turn LLM Reasoning</h3>
         <div class="pub-authors">Xiaofan Zhou, <span class="me">Huy Nguyen</span>, Bo Yu, Chenxi Liu, Lu Cheng</div>
