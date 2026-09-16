@@ -139,7 +139,43 @@
   /* ============ LAYOUT ============ */
   main{padding-top:104px;}
   .section{padding:40px 0;}
-  .section-head{margin-bottom:22px;}
+  /* section header bar: monochrome glass panel — luminous, glossy, lots of negative space */
+  .section-head{
+    position:relative;overflow:hidden;
+    border-radius:22px;
+    padding:36px 38px;
+    margin-bottom:26px;
+    background:
+      linear-gradient(135deg,rgba(255,255,255,0.94) 0%,rgba(247,248,250,0.80) 46%,rgba(233,235,239,0.72) 100%);
+    border:1px solid rgba(255,255,255,0.92);
+    -webkit-backdrop-filter:blur(18px) saturate(125%);
+    backdrop-filter:blur(18px) saturate(125%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.96),
+      inset 0 -1px 0 rgba(255,255,255,0.52),
+      0 1px 2px rgba(20,22,28,0.035);
+  }
+  /* soft luminance pooling from the upper left */
+  .section-head::before{
+    content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+    background:radial-gradient(125% 95% at 16% 0%,rgba(255,255,255,0.96) 0%,rgba(255,255,255,0) 58%);
+  }
+  /* glass sheen */
+  .section-head::after{
+    content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+    background:linear-gradient(104deg,transparent 33%,rgba(255,255,255,0.58) 50%,transparent 67%);
+    opacity:.55;
+  }
+  .section-head > *{position:relative;z-index:1;}
+  /* monochrome inside the bar; colour stays for the hero and footer */
+  .section-head .eyebrow{color:rgba(20,22,28,0.42);}
+  .section-head .eyebrow::before{background:linear-gradient(90deg,rgba(20,22,28,0.5) 0%,rgba(20,22,28,0.08) 100%);}
+  .section-head .section-title{color:#15171C;}
+  .section-head .grad{
+    background:linear-gradient(120deg,#23262C 0%,#6E7480 56%,#AAB0BA 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .section-head .section-sub{color:rgba(20,22,28,0.54);}
   .eyebrow{
     display:inline-flex;align-items:center;gap:9px;
     font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:500;
@@ -306,6 +342,7 @@
     .bento{grid-template-columns:1fr;}
     .col2{grid-column:span 1;}
     .card,.pub{padding:22px 20px;}
+    .section-head{padding:24px 22px;border-radius:18px;}
     .intro{padding:26px 22px;}
     .wrap{padding:0 16px;}
     .intro-top{gap:16px;}
