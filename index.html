@@ -69,36 +69,59 @@
     position:fixed;z-index:100;top:14px;left:50%;transform:translateX(-50%);
     width:min(1080px,calc(100% - 32px));
     border-radius:999px;
-    background:rgba(255,255,255,0.62);
-    -webkit-backdrop-filter:blur(22px) saturate(190%);
-    backdrop-filter:blur(22px) saturate(190%);
-    border:1px solid rgba(255,255,255,0.85);
+    background:rgba(255,255,255,0.05);
+    -webkit-backdrop-filter:blur(18px) saturate(180%);
+    backdrop-filter:blur(18px) saturate(180%);
+    border:1px solid rgba(20,22,28,0.07);
     box-shadow:
-      0 10px 34px -12px rgba(20,22,40,0.20),
-      0 2px 8px -2px rgba(20,22,40,0.08),
-      inset 0 1px 0 rgba(255,255,255,0.95),
-      inset 0 -1px 0 rgba(255,255,255,0.45);
+      0 8px 32px -10px rgba(20,22,28,0.14),
+      inset 0 1px 0 rgba(255,255,255,0.75),
+      inset 0 -1px 0 rgba(255,255,255,0.3);
     transition:background .3s ease, box-shadow .3s ease;
     overflow:hidden;
   }
   /* specular sheen across the top edge — the "lens" read */
   .glassbar::before{
     content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
-    background:linear-gradient(180deg,rgba(255,255,255,0.75) 0%,rgba(255,255,255,0.12) 42%,transparent 60%);
+    background:linear-gradient(180deg,rgba(255,255,255,0.45) 0%,rgba(255,255,255,0.06) 44%,transparent 62%);
   }
   .glassbar::after{
     content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
-    background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,0.55) 46%,transparent 62%);
-    opacity:.55;
+    background:linear-gradient(100deg,transparent 34%,rgba(255,255,255,0.32) 50%,transparent 66%);
+    opacity:.45;
   }
   .glassbar.scrolled{
-    background:rgba(255,255,255,0.78);
+    background:rgba(255,255,255,0.14);
     box-shadow:
-      0 14px 40px -14px rgba(20,22,40,0.26),
-      0 2px 8px -2px rgba(20,22,40,0.10),
-      inset 0 1px 0 rgba(255,255,255,0.95),
-      inset 0 -1px 0 rgba(255,255,255,0.45);
+      0 12px 38px -12px rgba(20,22,28,0.20),
+      inset 0 1px 0 rgba(255,255,255,0.8),
+      inset 0 -1px 0 rgba(255,255,255,0.32);
   }
+  /* pointer-tracking lens, ported from donsebby/liquid-lens-navbar-card:
+     no real displacement mapping — blur + saturate + brightness over
+     cyan/magenta inset fringes to suggest refraction */
+  .glass-lens{
+    position:absolute;top:5px;height:calc(100% - 10px);
+    width:96px;border-radius:999px;
+    pointer-events:none;z-index:2;
+    opacity:0;transform:scale(0.85);
+    transition:opacity .2s ease, transform .2s ease;
+    -webkit-backdrop-filter:blur(1.5px) saturate(215%) brightness(1.10);
+    backdrop-filter:blur(1.5px) saturate(215%) brightness(1.10);
+    background:radial-gradient(circle at 32% 26%,
+      rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.08) 46%, transparent 74%);
+    border:1px solid rgba(255,255,255,0.7);
+    box-shadow:
+      inset 0 0 14px rgba(255,255,255,0.4),
+      inset 0 -8px 12px rgba(20,22,28,0.06),
+      inset 5px 0 11px -2px rgba(56,189,248,0.5),
+      inset -5px 0 11px -2px rgba(244,114,182,0.46),
+      inset 0 3px 6px rgba(255,255,255,0.5),
+      0 6px 18px rgba(20,22,28,0.13);
+  }
+  .glass-lens.active{opacity:1;transform:scale(1);}
+  @media (prefers-reduced-motion:reduce){ .glass-lens{display:none;} }
+
   .glass-inner{
     position:relative;z-index:1;
     display:flex;align-items:center;justify-content:space-between;gap:20px;
@@ -331,6 +354,7 @@
       <a class="nav-cv" href="https://drive.google.com/file/d/1ofjegtVzFbEBBZFHZajZdIpnbCRMIM8v/view?usp=sharing" target="_blank" rel="noopener">CV</a>
     </nav>
   </div>
+  <span class="glass-lens" id="glasslens" aria-hidden="true"></span>
 </header>
 
 <main id="top">
@@ -428,7 +452,7 @@
       <div class="eyebrow">Research</div>
       <h2 class="section-title">Research <span class="grad">experience</span></h2>
     </div>
-    <div class="bento bento-2">
+    <div class="bento bento-1">
 
       <div class="card reveal">
         <div class="entry-head">
@@ -450,7 +474,7 @@
         <div class="entry-people">Supervisor: Dr. Roland Molontay &middot; Mentor: Donat Koller</div>
       </div>
 
-      <div class="card col2 reveal">
+      <div class="card reveal">
         <div class="entry-head">
           <h3 class="entry-org">University of Illinois Chicago</h3>
           <span class="entry-when">Aug &ndash; Dec 2025</span>
@@ -634,6 +658,41 @@
     };
     onScroll();
     window.addEventListener('scroll', onScroll, {passive:true});
+
+    // Lens follows the pointer across the bar. Position is eased toward the
+    // cursor each frame rather than set directly, which is what gives it the
+    // liquid trailing feel. Skipped on touch and for reduced motion.
+    var lens = document.getElementById('glasslens');
+    var mq = window.matchMedia;
+    var lensOk = lens && mq && mq('(pointer: fine)').matches && !mq('(prefers-reduced-motion: reduce)').matches;
+    if (lens && !lensOk) { lens.parentNode.removeChild(lens); }
+    else if (lensOk) {
+      var tx = 0, cur = null, raf = null;
+      var tick = function(){
+        var r = bar.getBoundingClientRect(), w = lens.offsetWidth;
+        var half = w / 2;
+        var target = Math.min(Math.max(tx - r.left, half), r.width - half);
+        if (cur === null) cur = target;
+        cur += (target - cur) * 0.18;
+        lens.style.left = (cur - half) + 'px';
+        raf = requestAnimationFrame(tick);
+      };
+      bar.addEventListener('pointerenter', function(e){
+        if (e.pointerType !== 'mouse') return;
+        tx = e.clientX;
+        lens.classList.add('active');
+        if (!raf) raf = requestAnimationFrame(tick);
+      });
+      bar.addEventListener('pointermove', function(e){
+        if (e.pointerType !== 'mouse') return;
+        tx = e.clientX;
+      }, {passive:true});
+      bar.addEventListener('pointerleave', function(){
+        lens.classList.remove('active');
+        if (raf) { cancelAnimationFrame(raf); raf = null; }
+        cur = null;
+      });
+    }
 
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var els = document.querySelectorAll('.reveal');
