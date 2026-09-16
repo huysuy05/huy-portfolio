@@ -69,33 +69,35 @@
     position:fixed;z-index:100;top:14px;left:50%;transform:translateX(-50%);
     width:min(1080px,calc(100% - 32px));
     border-radius:999px;
-    background:linear-gradient(135deg,rgba(255,255,255,0.46) 0%,rgba(255,255,255,0.28) 52%,rgba(255,255,255,0.38) 100%);
-    -webkit-backdrop-filter:blur(30px) saturate(150%);
-    backdrop-filter:blur(30px) saturate(150%);
-    border:1px solid rgba(255,255,255,0.7);
+    background:rgba(255,255,255,0.62);
+    -webkit-backdrop-filter:blur(22px) saturate(190%);
+    backdrop-filter:blur(22px) saturate(190%);
+    border:1px solid rgba(255,255,255,0.85);
     box-shadow:
-      0 8px 30px -14px rgba(20,22,28,0.16),
-      inset 0 1px 0 rgba(255,255,255,0.9),
-      inset 0 -1px 0 rgba(255,255,255,0.35);
+      0 10px 34px -12px rgba(20,22,40,0.20),
+      0 2px 8px -2px rgba(20,22,40,0.08),
+      inset 0 1px 0 rgba(255,255,255,0.95),
+      inset 0 -1px 0 rgba(255,255,255,0.45);
     transition:background .3s ease, box-shadow .3s ease;
     overflow:hidden;
   }
   /* specular sheen across the top edge — the "lens" read */
   .glassbar::before{
     content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
-    background:linear-gradient(180deg,rgba(255,255,255,0.55) 0%,rgba(255,255,255,0.08) 46%,transparent 64%);
+    background:linear-gradient(180deg,rgba(255,255,255,0.75) 0%,rgba(255,255,255,0.12) 42%,transparent 60%);
   }
   .glassbar::after{
     content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
-    background:linear-gradient(100deg,transparent 32%,rgba(255,255,255,0.42) 48%,transparent 64%);
-    opacity:.5;
+    background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,0.55) 46%,transparent 62%);
+    opacity:.55;
   }
   .glassbar.scrolled{
-    background:linear-gradient(135deg,rgba(255,255,255,0.60) 0%,rgba(255,255,255,0.42) 52%,rgba(255,255,255,0.52) 100%);
+    background:rgba(255,255,255,0.78);
     box-shadow:
-      0 12px 36px -14px rgba(20,22,28,0.22),
-      inset 0 1px 0 rgba(255,255,255,0.92),
-      inset 0 -1px 0 rgba(255,255,255,0.38);
+      0 14px 40px -14px rgba(20,22,40,0.26),
+      0 2px 8px -2px rgba(20,22,40,0.10),
+      inset 0 1px 0 rgba(255,255,255,0.95),
+      inset 0 -1px 0 rgba(255,255,255,0.45);
   }
   .glass-inner{
     position:relative;z-index:1;
@@ -105,10 +107,10 @@
   .brandmark{display:flex;align-items:center;gap:11px;min-width:0;}
   .brand-dot{
     width:32px;height:32px;border-radius:50%;flex:none;
-    background:linear-gradient(145deg,#31353D 0%,#16181D 55%,#3B4049 100%);
+    background:var(--brand);
     display:flex;align-items:center;justify-content:center;
     color:#fff;font-weight:800;font-size:13px;letter-spacing:-0.02em;
-    box-shadow:0 2px 8px -2px rgba(20,22,28,0.35), inset 0 1px 0 rgba(255,255,255,0.28);
+    box-shadow:0 3px 10px -2px rgba(79,70,229,0.55), inset 0 1px 0 rgba(255,255,255,0.4);
   }
   .brand-name{font-weight:650;font-size:15px;letter-spacing:-0.015em;white-space:nowrap;}
   .glass-nav{display:flex;align-items:center;gap:2px;}
@@ -120,19 +122,18 @@
   }
   .glass-nav a:hover{
     color:var(--ink);
-    background:rgba(255,255,255,0.55);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,0.85);
+    background:rgba(255,255,255,0.85);
+    box-shadow:0 1px 4px rgba(20,22,40,0.10), inset 0 1px 0 rgba(255,255,255,0.9);
   }
   .glass-nav .nav-cv{
     margin-left:6px;padding:8px 17px;
-    background:linear-gradient(145deg,#31353D 0%,#16181D 58%,#3B4049 100%);
-    color:#fff;font-weight:600;
-    box-shadow:0 3px 12px -4px rgba(20,22,28,0.4), inset 0 1px 0 rgba(255,255,255,0.26);
+    background:var(--brand);color:#fff;font-weight:600;
+    box-shadow:0 4px 14px -4px rgba(79,70,229,0.6), inset 0 1px 0 rgba(255,255,255,0.35);
   }
   .glass-nav .nav-cv:hover{
-    color:#fff;
+    color:#fff;background:var(--brand);
     transform:translateY(-1px);
-    box-shadow:0 6px 18px -5px rgba(20,22,28,0.45), inset 0 1px 0 rgba(255,255,255,0.3);
+    box-shadow:0 7px 20px -5px rgba(79,70,229,0.7), inset 0 1px 0 rgba(255,255,255,0.35);
   }
 
   /* ============ LAYOUT ============ */
