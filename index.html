@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* brand gradient — vibrant, but restrained enough to read as academic */
+    /* brand gradient: vibrant, but restrained enough to read as academic */
     --b1:#4F46E5;
     --b2:#7C3AED;
     --b3:#DB2777;
@@ -94,7 +94,7 @@
     transition:background .3s ease, box-shadow .3s ease;
     overflow:hidden;
   }
-  /* specular sheen across the top edge — the "lens" read */
+  /* specular sheen across the top edge, the "lens" read */
   .glassbar::before{
     content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
     background:linear-gradient(180deg,rgba(255,255,255,0.45) 0%,rgba(255,255,255,0.06) 44%,transparent 62%);
@@ -112,7 +112,7 @@
       inset 0 -1px 0 rgba(255,255,255,0.32);
   }
   /* pointer-tracking lens, ported from donsebby/liquid-lens-navbar-card:
-     no real displacement mapping — blur + saturate + brightness over
+     no real displacement mapping, just blur + saturate + brightness over
      cyan/magenta inset fringes to suggest refraction */
   .glass-lens{
     position:absolute;top:5px;height:calc(100% - 10px);
@@ -421,7 +421,7 @@
         <div class="intro-body">
           <p>I&rsquo;m a <strong>senior in Data Science at Augustana College</strong>, and I&rsquo;m planning to pursue a <strong>PhD in computer science or data science</strong>.</p>
           <p>My research sits at the intersection of <strong>large language models</strong> and <strong>AI for social science</strong>. Right now I&rsquo;m interested not only in the underlying patterns inside these models, but in how those patterns can be made <strong>causal and explainable</strong> on questions that matter to people and society.</p>
-          <p>I&rsquo;m from <strong>Hanoi</strong>, the capital of Vietnam. Outside of work I play basketball, and I&rsquo;m a dedicated runner &mdash; though the running is on pause at the moment while I focus on research.</p>
+          <p>I&rsquo;m from <strong>Hanoi</strong>, the capital of Vietnam. Outside of work I play basketball, and I&rsquo;m a dedicated runner, though the running is on pause at the moment while I focus on research.</p>
         </div>
       </div>
 
@@ -448,7 +448,7 @@
       <div class="card reveal">
         <span class="card-title">Research interests</span>
         <ul class="ri-list">
-          <li><strong>Large language models</strong>: making model confidence mean something when its answers inform real decisions, through conformal prediction, calibration, and principled abstention &mdash; and making that behaviour explainable rather than only accurate.</li>
+          <li><strong>Large language models</strong>: making model confidence mean something when its answers inform real decisions, through conformal prediction, calibration, and principled abstention, and making that behaviour explainable rather than only accurate.</li>
           <li><strong>Social media analysis</strong>: using large-scale online data to study how ideas spread and mutate, from template lifecycles and topic drift to how caption context reshapes meaning over time.</li>
           <li><strong>Product innovation</strong>: tracing how technologies descend from one another at scale, inferring lineage and capability transfer across hundreds of thousands of designs to understand how innovation actually propagates.</li>
         </ul>
@@ -651,7 +651,7 @@
           <h3 class="entry-org">Trading Engine for Financial Markets</h3>
         </div>
         <div class="entry-role">Volatility forecasting for SPY</div>
-        <p class="entry-body">A reproducible research pipeline asking whether market, macro, and sequence-model features improve daily volatility forecasting. It pulls SPY OHLCV data with yfinance alongside FRED macro series (CPI, unemployment, Treasury yields, VIX, and credit-spread proxies) spanning 1993 to 2026, then trains seven model families &mdash; LSTM, CNN, CNN-LSTM, a Transformer, XGBoost, and Elastic Net &mdash; under walk-forward validation to keep time-series leakage out. Tuning runs through Optuna and grid search with automatic CUDA, MPS, or CPU backend selection, and models are scored on both forecast quality and trading-simulation outcomes across volatility regression and regime classification.</p>
+        <p class="entry-body">A reproducible research pipeline asking whether market, macro, and sequence-model features improve daily volatility forecasting. It pulls SPY OHLCV data with yfinance alongside FRED macro series (CPI, unemployment, Treasury yields, VIX, and credit-spread proxies) spanning 1993 to 2026, then trains seven model families, including LSTM, CNN, CNN-LSTM, a Transformer, XGBoost, and Elastic Net, under walk-forward validation to keep time-series leakage out. Tuning runs through Optuna and grid search with automatic CUDA, MPS, or CPU backend selection, and models are scored on both forecast quality and trading-simulation outcomes across volatility regression and regime classification.</p>
         <a class="pub-link" href="https://github.com/ismaelh3/Trading-Engine-for-Financial-Markets" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.51 11.51 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>View on GitHub</a>
       </div>
 
