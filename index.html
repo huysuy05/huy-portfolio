@@ -232,6 +232,13 @@
     text-transform:uppercase;color:var(--muted);margin-top:8px;
   }
   .intro-mark{display:block;width:152px;height:auto;margin-top:14px;}
+  .ri-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:15px;}
+  .ri-list li{position:relative;padding-left:19px;font-size:15.5px;line-height:1.66;color:var(--ink-2);}
+  .ri-list li::before{
+    content:"";position:absolute;left:0;top:0.62em;width:6px;height:6px;
+    border-radius:50%;background:var(--brand);
+  }
+  .ri-list strong{color:var(--ink);font-weight:650;}
   @media (max-width:720px){ .intro-mark{width:128px;margin-top:12px;} }
   .intro-body{display:flex;flex-direction:column;gap:14px;color:var(--ink-2);font-size:16.5px;line-height:1.7;}
   .intro-body strong{color:var(--ink);font-weight:620;}
@@ -414,6 +421,7 @@
         <div class="intro-body">
           <p>I&rsquo;m a <strong>senior in Data Science at Augustana College</strong>, and I&rsquo;m planning to pursue a <strong>PhD in computer science or data science</strong>.</p>
           <p>My research sits at the intersection of <strong>large language models</strong> and <strong>AI for social science</strong>. Right now I&rsquo;m interested not only in the underlying patterns inside these models, but in how those patterns can be made <strong>causal and explainable</strong> on questions that matter to people and society.</p>
+          <p>I&rsquo;m from <strong>Hanoi</strong>, the capital of Vietnam. Outside of work I play basketball, and I&rsquo;m a dedicated runner &mdash; though the running is on pause at the moment while I focus on research.</p>
         </div>
       </div>
 
@@ -424,7 +432,7 @@
             <h3 class="listing-name">Augustana College</h3>
             <span class="entry-when">Expected May 2027</span>
           </div>
-          <div class="listing-sub">B.A. Data Science &middot; GPA 3.5 / 4.0 <span class="place">/ Rock Island, IL</span></div>
+          <div class="listing-sub">B.A. Data Science <span class="place">/ Rock Island, IL</span></div>
           <p class="listing-body">Coursework in machine learning, deep learning, linear algebra, multivariable calculus, probability and statistics, and principles of computer systems.</p>
         </div>
         <div class="listing">
@@ -432,14 +440,18 @@
             <h3 class="listing-name">Aquincum Institute of Technology</h3>
             <span class="entry-when">Jan &ndash; May 2026</span>
           </div>
-          <div class="listing-sub">Study &amp; Research Abroad &middot; GPA 4.0 / 4.0 <span class="place">/ Budapest, Hungary</span></div>
+          <div class="listing-sub">Study &amp; Research Abroad <span class="place">/ Budapest, Hungary</span></div>
           <p class="listing-body">Research topic: machine learning for meme template identification, supervised by Dr. Roland Molontay.</p>
         </div>
       </div>
 
       <div class="card reveal">
-        <span class="card-title">Looking ahead</span>
-        <p class="entry-body">I&rsquo;m applying to PhD programs in computer science and data science, looking for groups where language models are studied as instruments for understanding people and society, not only as systems to be scaled.</p>
+        <span class="card-title">Research interests</span>
+        <ul class="ri-list">
+          <li><strong>Large language models</strong>: making model confidence mean something when its answers inform real decisions, through conformal prediction, calibration, and principled abstention &mdash; and making that behaviour explainable rather than only accurate.</li>
+          <li><strong>Social media analysis</strong>: using large-scale online data to study how ideas spread and mutate, from template lifecycles and topic drift to how caption context reshapes meaning over time.</li>
+          <li><strong>Product innovation</strong>: tracing how technologies descend from one another at scale, inferring lineage and capability transfer across hundreds of thousands of designs to understand how innovation actually propagates.</li>
+        </ul>
       </div>
       </div>
 
